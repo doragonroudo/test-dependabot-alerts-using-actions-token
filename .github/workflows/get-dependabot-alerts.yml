@@ -1,0 +1,21 @@
+name: 'Get Dependabot alrts'
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+
+permissions: write-all
+
+jobs:
+  test-dependabot:
+    name: 'Get Dependabot alerts'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Get Dependabot alerts'
+        shell: bash
+        run: |
+          RESULT=$(curl --location --request GET 'https://api.github.com/repos/${{ github.repository }}/dependabot/alerts' \
+          --header 'Authorization: Bearer ${{ github.token }}' | jq)
+          echo ${RESULT}
