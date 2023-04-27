@@ -1,4 +1,4 @@
-name: 'Get Dependabot alrts'
+name: 'Get Dependabot alerts'
 
 on:
   workflow_dispatch:
